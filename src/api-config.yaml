@@ -1,0 +1,84 @@
+web3_bio_profile_api:
+  description: "Web3.bio Profile APIs for integrating universal profiles."
+  base_url: "https://api.web3.bio"
+  testnet_base_url: "https://api-staging.web3.bio"
+  endpoints:
+    - name: "Universal Profile Retrieval"
+      path: "/profile/{identity}"
+      description: "Retrieve universal profiles across platforms."
+      method: "GET"
+      parameters:
+        - name: "identity"
+          type: "string"
+          description: "Ethereum address, ENS domain, Lens handle, Farcaster username, .bit domain, or Next.ID address."
+      examples:
+        - "/profile/0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+        - "/profile/vitalik.eth"
+        - "/profile/stani.lens"
+        - "/profile/dwr.eth.farcaster"
+        - "/profile/0x028f936e528de34fc95179780751ec21256825ce604950580978a8961c5af03e50"
+        - "/profile/jeffx.bit"
+
+    - name: "ENS Profile Retrieval"
+      path: "/profile/ens/{identity}"
+      description: "Retrieve an ENS profile."
+      method: "GET"
+      parameters:
+        - name: "identity"
+          type: "string"
+          description: "Ethereum address or ENS domain."
+      examples:
+        - "/profile/ens/0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+        - "/profile/ens/vitalik.eth"
+
+    - name: "Lens Profile Retrieval"
+      path: "/profile/lens/{identity}"
+      description: "Retrieve a Lens profile."
+      method: "GET"
+      parameters:
+        - name: "identity"
+          type: "string"
+          description: "Ethereum/Polygon address or a Lens handle."
+      examples:
+        - "/profile/lens/0x7241dddec3a6af367882eaf9651b87e1c7549dff"
+        - "/profile/lens/stani.lens"
+      
+    - name: "Farcaster Profile Retrieval"
+      path: "/profile/farcaster/{identity}"
+      description: "Retrieve a Farcaster profile."
+      method: "GET"
+      parameters:
+        - name: "identity"
+          type: "string"
+          description: "Ethereum address or a Farcaster username."
+      examples:
+        - "/profile/farcaster/0x934b510d4c9103e6a87aef13b816fb080286d649"
+        - "/profile/farcaster/suji"
+
+    - name: ".bit Profile Retrieval"
+      path: "/profile/dotbit/{identity}"
+      description: "Retrieve a .bit profile."
+      method: "GET"
+      parameters:
+        - name: "identity"
+          type: "string"
+          description: "Ethereum address or a .bit domain."
+      examples:
+        - "/profile/dotbit/0xfa8fa9cf58eaff86aa208366a14d69de87867f1d"
+        - "/profile/dotbit/bestcase.bit"
+
+  release_notes:
+    - date: "August Update"
+      changes:
+        - "Feature: Added .bit query support to the Profile APIs."
+        - "Update: Added ENS username support in the Farcaster Profile API."
+    - date: "July Update"
+      changes:
+        - "Feature: Added Next.ID query support to the Profile APIs."
+    - date: "June Update"
+      changes:
+        - "Feature: Added Universal Profile API. Developers can retrieve universal profiles across supported platforms with a single query."
+    - date: "May Update"
+      changes:
+        - "Feature: Added Ethereum Name Service (ENS), Lens, and Farcaster support to the Profile APIs."
+
