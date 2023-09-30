@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Web3Card.css';
+import { 
+  fetchUniversalProfile, 
+  fetchENSProfile,
+  fetchLensProfile,
+  fetchFarcasterProfile,
+  fetchDotBitProfile 
+} from '../apiFunctions';
 
 const Web3Card = ({ address }) => {
   const [profileData, setProfileData] = useState(null);
 
   useEffect(() => {
-    const fetchProfileData = async () => {
-      try {
-        const response = await axios.get(`https://api.web3.bio/profile/${address}`);
-        setProfileData(response.data);
-      } catch (error) {
-        console.error('Error fetching profile data:', error);
-      }
+    const fetchData = async () => {
+      const data = await fetchUniversalProfile(address);
+      setProfileData(data);
     };
 
-    fetchProfileData();
+    fetchData();
   }, [address]);
 
   if (!profileData) {
